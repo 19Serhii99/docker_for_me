@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  nesterov-app:
+    build: .
+    links:
+      - nesterov-database
+    ports:
+      - 8080:8080
+  nesterov-database:
+    image: oscarfonts/h2
+    ports:
+      - 1521:1521
+      - 81:81
+    environment:
+      H2_OPTIONS: -ifNotExists
